@@ -1,6 +1,16 @@
 import React from 'react';
 import logo from "../../../public/Logo (2).png"
+import avatar from "../../../public/avatar.png"
+import { Link } from 'react-router-dom';
 const Navbar = () => {
+    const navLinks = 
+    <>
+    <Link><li>Home</li></Link>
+    <Link><li>Products</li></Link>
+    <Link><li>Categories</li></Link>
+    <Link><li>Custom</li></Link>
+    <Link><li>Blog</li></Link>
+    </>
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -21,33 +31,15 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-barlow text-lg font-medium text-[#202020] gap-2">
+        {navLinks}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <img src={logo} alt="" />
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal px-1 font-barlow text-lg font-medium text-[#202020] gap-2">
+      {navLinks}
     </ul>
   </div>
   <div className="navbar-end">
@@ -67,7 +59,7 @@ const Navbar = () => {
               strokeWidth="2"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          <span className="badge badge-sm indicator-item">8</span>
+          <span className="badge badge-sm indicator-item bottom-0">8</span>
         </div>
       </div>
     </div>
@@ -76,7 +68,7 @@ const Navbar = () => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={avatar} />
         </div>
       </div>
       <ul
