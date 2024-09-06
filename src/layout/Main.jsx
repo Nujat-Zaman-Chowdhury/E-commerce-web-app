@@ -1,9 +1,19 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import { AuthContext } from '../providers/AuthProvider';
+import { checkLogin } from '../api';
 
 const Main = () => {
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        const email = checkLogin();
+        if(!email){
+            navigate('/')
+        }
+    },[])
     return (
         <div>
             <Navbar/>

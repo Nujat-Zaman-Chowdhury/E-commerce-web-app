@@ -1,15 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import main from "../../../public/main.png";
 import icon from "../../../public/icon.png";
 import { AuthContext } from '../../providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error, setError] = useState("");
 
-  const { logIn,setLoading} = useContext(AuthContext)
+  const {user, logIn,setLoading} = useContext(AuthContext)
   const navigate = useNavigate();
   const handleLogIn =async (e)=>{
     e.preventDefault();
@@ -22,8 +23,7 @@ const Login = () => {
     try {
       await logIn({ email, password });
       console.log("User Loged in:", email);
-
-      navigate('/products')
+      toast.success("Login Successful")
     } catch (err) {
       setError("Signup failed. Please try again.");
       console.error("Error during signup:", err);
@@ -32,6 +32,12 @@ const Login = () => {
     }
     // console.log(email,password)
   }
+
+  useEffect(()=>{
+    if(user){
+      navigate('/products')
+    }
+  },[user])
     return (
         <div className="flex h-[1024px]">
       <div className="w-1/2 flex justify-center items-center">

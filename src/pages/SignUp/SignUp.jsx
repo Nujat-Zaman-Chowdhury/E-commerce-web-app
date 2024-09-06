@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import main from "../../../public/main.png";
 import icon from "../../../public/icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -12,12 +12,13 @@ const SignUp = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error, setError] = useState("");
+  const navigate = useNavigate()
 
-  const { signUp,setLoading} = useContext(AuthContext)
+  const {user, signUp,setLoading} = useContext(AuthContext)
 
   const handleNameChange = (first, last) => {
     const combinedName = `${first} ${last}`.trim();
-    setFullName(combinedName); // Update the full name
+    setFullName(combinedName);
   };
 
   const handleSignUp =async (e)=>{
@@ -29,16 +30,24 @@ const SignUp = () => {
       return;
     }
     try {
-      await signUp({ email, password,fullName });
-      console.log("User signed up:", email);
+      const data = await signUp({ email, password });
+      console.log("User signed up:", data);
+      toast.success("Sign up successful")
     } catch (err) {
       setError("Signup failed. Please try again.");
+      toast.error(err.message)
       console.error("Error during signup:", err);
     } finally {
       setLoading(false);
     }
     // console.log(email,password)
   }
+
+  useEffect(()=>{
+    if(user){
+      navigate('/products')
+    }
+  },[user])
   return (
     <div className="flex h-[1024px]">
       <div className="w-1/2 flex justify-center items-center">

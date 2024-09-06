@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "../../../public/Logo (2).png"
 import avatar from "../../../public/avatar.png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext)
+
+  const navigate = useNavigate();
     const navLinks = 
     <>
     <Link><li>Home</li></Link>
@@ -11,6 +15,12 @@ const Navbar = () => {
     <Link><li>Custom</li></Link>
     <Link><li>Blog</li></Link>
     </>
+
+    //logout 
+    const handleLogOut = ()=>{
+      logOut();
+      navigate("/login")
+    }
     return (
         <div className="navbar bg-base-100 lg:py-10 container mx-auto  border-b border-b-[#ECECEC] mb-5">
   <div className="navbar-start">
@@ -74,14 +84,10 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+          <p className='my-3'>Email: <span className='text-blue-400'>{user?.email}</span></p>
+        <button
+        onClick={handleLogOut}
+        className='btn'>Logout</button>
       </ul>
     </div>
   </div>

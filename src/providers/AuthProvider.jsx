@@ -1,13 +1,15 @@
-import React, { createContext, useState } from 'react'
-import { userLogIn, userSignUp } from '../api';
+import React, { createContext, useEffect, useState } from 'react'
+import { checkLogin, userLogIn, userLogOut, userSignUp } from '../api';
 import toast from 'react-hot-toast';
 export const AuthContext = createContext(null)
 
 function AuthProvider({children}) {
     const [user,setUser] = useState(null);
+    
     const [loading, setLoading] = useState(false);
 
     const logIn = ({email,password})=>{
+        setLoading(true)
         const data = userLogIn({email,password})
         // console.log("login user",data);
         if(data){
@@ -19,23 +21,32 @@ function AuthProvider({children}) {
             return false;
         }
     }
-    const signUp = ({email,password,fullName})=>{
+    const signUp = ({email,password})=>{
         setLoading(true)
-        console.log("user",email,password,fullName);
-        const isSignUp = userSignUp({ email, password,fullName })
+        console.log("user",email,password);
+        const isSignUp = userSignUp({ email, password })
 
         if(isSignUp){
             return true;
         }
         else{
-            setUser({email,name:fullName})
-            toast.error("Email Already Exist")
+            
+            setUser({email})
             return false;
         }
     }
     const logOut = ()=>{
-
+        userLogOut();
+        setUser(null)
     }
+
+    useEffect(()=>{
+        const user = checkLogin();
+        if(user){
+            setUser({email:user});
+            setLoading(false)
+        }
+    },[])
   return (
     <AuthContext.Provider value={{
         user,
