@@ -4,7 +4,7 @@ import flag from "../../../public/🇺🇸.png"
 
 const Footer = () => {
   return (
-    <footer className="px-[100px] pb-6 pt-20 bg-[#0E0E0E]">
+    <footer className="px-[100px] pb-6 pt-20 bg-[#0E0E0E] mt-[96px]">
       <div className="flex flex-col justify-between py-10 space-y-8 lg:flex-row lg:space-y-0">
         <div className="cursor-pointer">
           <img src={logo} alt="" />
