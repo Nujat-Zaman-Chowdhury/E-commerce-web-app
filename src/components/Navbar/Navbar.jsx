@@ -12,7 +12,7 @@ const Navbar = () => {
     <Link><li>Blog</li></Link>
     </>
     return (
-        <div className="navbar bg-base-100 lg:py-10 container mx-auto">
+        <div className="navbar bg-base-100 lg:py-10 container mx-auto  border-b border-b-[#ECECEC] mb-5">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

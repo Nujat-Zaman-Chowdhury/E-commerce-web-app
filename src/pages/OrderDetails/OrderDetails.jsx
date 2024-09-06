@@ -11,7 +11,7 @@ const OrderDetails = () => {
           An overview of your order
         </h1>
         <div className="p-6 bg-[#FAFAFA] rounded-xl grid grid-rows-1">
-            
+
           <div className="">
             <div className="flex justify-between">
               <div className="flex items-center">
@@ -45,7 +45,7 @@ const OrderDetails = () => {
                   </h4>
                 </div>
               </div>
-              <div>
+              <div className="cursor-pointer hover:shadow-md h-6 w-6 hover:border hover:border-red-400">
                 <img src={cross} alt="" />
               </div>
             </div>
@@ -71,12 +71,16 @@ const OrderDetails = () => {
                 <p className="text-[#656565] font-medium">€ 1071.00</p>
                </div>
                <div className="flex justify-between  text-xl">
-                <h5 className="text-[#656565]">Subtotal</h5>
-                <p className="text-[#656565] font-medium">€ 1071.00</p>
+                <h5 className="text-[#656565]">Shipping</h5>
+                <p className="text-[#656565] font-medium">Free</p>
                </div>
                <div className="flex justify-between  text-xl">
-                <h5 className="text-[#656565]">Subtotal</h5>
-                <p className="text-[#656565] font-medium">€ 1071.00</p>
+                <h5 className="text-[#656565] flex items-center gap-2">Estimated Tax <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M14.6693 8.0026C14.6693 4.3207 11.6845 1.33594 8.0026 1.33594C4.3207 1.33594 1.33594 4.3207 1.33594 8.0026C1.33594 11.6845 4.3207 14.6693 8.0026 14.6693C11.6845 14.6693 14.6693 11.6845 14.6693 8.0026Z" stroke="#656565" stroke-width="1.3"/>
+  <path d="M8.15885 11.3359V8.0026C8.15885 7.68834 8.15885 7.5312 8.06119 7.43354C7.96359 7.33594 7.80645 7.33594 7.49219 7.33594" stroke="#656565" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7.99219 5.33594H7.99819" stroke="#656565" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></h5>
+                <p className="text-[#656565] font-medium">€ -</p>
                </div>
             </div>
     <hr  className="my-[20px] bg-[#ECECEC]"/>
