@@ -21,9 +21,10 @@ const Login = () => {
       return;
     }
     try {
-      await logIn({ email, password });
-      console.log("User Loged in:", email);
-      toast.success("Login Successful")
+      const data= await logIn({ email, password });
+      if(data){
+        toast.success("Login Successful")
+      }
     } catch (err) {
       setError("Signup failed. Please try again.");
       console.error("Error during signup:", err);
@@ -39,8 +40,8 @@ const Login = () => {
     }
   },[user])
     return (
-        <div className="flex h-[1024px]">
-      <div className="w-1/2 flex justify-center items-center">
+        <div className="w-full flex flex-col lg:flex-row h-[1024px]">
+      <div className="w-full lg:w-1/2 lg:flex  lg:justify-center lg:items-center">
         <div className="bg-[#FAFAFA] p-6 font-barlow rounded-md">
           <div className="mb-10">
             <h5 className="text-black font-barlow text-3xl font-medium">
@@ -118,7 +119,7 @@ const Login = () => {
                 <hr className="w-full text-gray-400" />
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col lg:flex-row gap-4">
                 <div className="btn  bg-none shadow-none flex items-center justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border border-[#D9D9D9] rounded-md ">
                   <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
                     <path
@@ -189,7 +190,7 @@ const Login = () => {
         </div>
       </div>
       <div
-        className="w-1/2 h-full bg-cover relative flex justify-center items-center"
+        className="w-full lg:w-1/2 h-full bg-contain lg:bg-cover relative flex justify-center items-center"
         style={{ backgroundImage: `url(${main})` }}
       >
         <div className="absolute flex flex-col justify-center items-center ">
@@ -197,7 +198,7 @@ const Login = () => {
           <h4 className="font-inter text-white text-[40px] font-bold mt-[6px]">
             Furni<span className="text-[#1E99F5]">Flex</span>
           </h4>
-          <p className="text-[#C8C4C4] font-barlow font-medium w-[445px] mx-auto text-center">
+          <p className="text-[#C8C4C4] font-barlow font-medium w-full md:w-[445px] mx-auto text-center">
             Discover a seamless shopping experience with our curated collection
             of products. From fashion to electronics, we bring quality.
           </p>

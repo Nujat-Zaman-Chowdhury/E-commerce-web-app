@@ -1,25 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import img1 from "../../../public/Image (1).png";
+import { CartContext } from "../../providers/CartProvider";
+import toast from "react-hot-toast";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
+  const {id,name,price,originalPrice,discount,description,image} = product;
+
+  
+  const {addToCart} = useContext(CartContext)
+  const navigate = useNavigate()
+
+  const handleAddToCart = (product)=>{
+    addToCart(product);
+    navigate('/cart')
+    
+  }
+  
   return (
     <div className="flex flex-col p-4 gap-8 border border-[#F1F1F1] rounded-lg font-barlow">
-      <img src={img1} alt="product.name" className="w-full rounded-lg" />
-      <div className="w-full">
-        <h3 className="text-lg font-semibold text-[#343434]">product.nam</h3>
-        <p className="flex flex-row text-lg">
+      <img src={image} alt="product image" className="w-full rounded-lg object-cover" />
+      <div className="">
+        <h3 className="text-lg font-semibold text-[#343434]">{name}</h3>
+        <p className="flex flex-row gap-3 my-4 text-lg">
           <span className="text-[#343434] text-lg  font-bold">
-            product.discounted_price
+           {price}
           </span>
           <span className="line-through text-[#ABABAB] text-lg font-medium">
-            product.original_price
+           {originalPrice}
           </span>
           <span className="text-[#B92E2E] font-semibold">
-            product.discount_percentage
+           {discount}
           </span>
         </p>
-        <p className="text-[#838383] mb-7">product.description</p>
-        <button className="bg-[#202020] text-white py-2 px-4 rounded hover:bg-gray-600 w-full flex gap-3 justify-center">
+        <p className="text-[#838383] mb-7 w-[237px]">{description}</p>
+       
+      </div>
+      <div className="flex flex-1 justify-end items-end">
+          {/* add to cart btn */}
+          <button
+        onClick={()=>handleAddToCart(product)}
+         className="bg-[#202020] text-white py-2 px-4 rounded hover:bg-gray-600 w-full flex gap-3 justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -40,7 +61,7 @@ const ProductCard = () => {
           </svg>{" "}
           Add to cart
         </button>
-      </div>
+        </div>
     </div>
   );
 };

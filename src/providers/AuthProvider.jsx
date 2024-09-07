@@ -6,7 +6,7 @@ export const AuthContext = createContext(null)
 function AuthProvider({children}) {
     const [user,setUser] = useState(null);
     
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const logIn = ({email,password})=>{
         setLoading(true)
@@ -14,6 +14,7 @@ function AuthProvider({children}) {
         // console.log("login user",data);
         if(data){
             setUser(data)
+            setLoading(false)
             return true;
         }else{
             
@@ -21,20 +22,23 @@ function AuthProvider({children}) {
             return false;
         }
     }
-    const signUp = ({email,password})=>{
+    const signUp = ({email,password, fullName})=>{
         setLoading(true)
-        console.log("user",email,password);
-        const isSignUp = userSignUp({ email, password })
+        const isSignUp = userSignUp({ email, password, fullName })
 
         if(isSignUp){
+            setUser({email})
+            toast.success("Sign Up Successful")
+            setLoading(false)
             return true;
         }
         else{
             
-            setUser({email})
+            setLoading(false)
             return false;
         }
     }
+
     const logOut = ()=>{
         userLogOut();
         setUser(null)
@@ -44,8 +48,8 @@ function AuthProvider({children}) {
         const user = checkLogin();
         if(user){
             setUser({email:user});
-            setLoading(false)
         }
+        setLoading(false)
     },[])
   return (
     <AuthContext.Provider value={{

@@ -4,12 +4,12 @@ import flag from "../../../public/🇺🇸.png"
 
 const Footer = () => {
   return (
-    <footer className="px-[100px] pb-6 pt-20 bg-[#0E0E0E] mt-[96px]">
+    <footer className="px-10 lg:px-[100px] pb-6 pt-20 bg-[#0E0E0E] mt-[96px]">
       <div className="flex flex-col justify-between py-10 space-y-8 lg:flex-row lg:space-y-0">
         <div className="cursor-pointer">
           <img src={logo} alt="" />
         </div>
-        <div className="flex text-sm gap-x-10 gap-y-8 space-x-[120px] font-barlow">
+        <div className="flex flex-col md:flex-row text-sm gap-x-10 gap-y-8 lg:space-x-[120px] font-barlow">
           <div className="space-y-3">
             <h3 className="tracking-wide text-lg font-semibold text-white">About Us</h3>
             <ul className="text-[#81859F] text-lg font-medium">
@@ -66,9 +66,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className="border-[#252948] mt-[100px]" />
-      <div className="flex justify-between mt-10 mb-[44px]">
-        <div className="flex gap-[11px]">
+      <hr className="border-[#252948] mt-20 md:mt-[100px]" />
+      <div className="flex flex-col lg:flex-row justify-center lg:justify-between mt-10 mb-[44px]">
+        <div className="flex gap-10 md:gap-[11px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -152,7 +152,7 @@ const Footer = () => {
           </svg>
         </div>
         <div>
-          <p className="text-[#81859F] flex gap-6 font-medium">
+          <p className="text-[#81859F] flex flex-wrap my-4 lg:my-0 gap-6 font-medium">
             <a href="">March22 Recap</a>
             <a href="#">Privacy Policy</a>
             <a href="#">General Terms</a>

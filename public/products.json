@@ -1,0 +1,63 @@
+[
+    {
+      "id": 1,
+      "name": "Recliner Chair Wood",
+      "price": 299,
+      "originalPrice": 350,
+      "discount": "30% OFF",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended",
+      "image": "https://i.ibb.co/KLBKDX6/Image-2.png",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "Timber Ride Padded",
+      "price": 59,
+      "originalPrice": 75,
+      "discount": "30% OFF",
+      "description": "High Back Rocking Side Pocket Portable Folding Outdoor Camping Chairs",
+      "image": "https://i.ibb.co/G2NVVqC/Image-1.png",
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "name": "Colored Wooden Chair",
+      "price": 299,
+      "originalPrice": 350,
+      "discount": "30% OFF",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended",
+      "image": "https://i.ibb.co/sVHGVhH/Image-3.png",
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "name": "Blank Bamboo Wicker",
+      "price": 299,
+      "originalPrice": 350,
+      "discount": "30% OFF",
+      "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs",
+      "image": "https://i.ibb.co/1m8S82r/Image-4.png",
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "name": "Isolated Wooden Rock",
+      "price": 165,
+      "originalPrice": 400,
+      "discount": "30% OFF",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended",
+      "image": "https://i.ibb.co/Q6Cvpzp/Image-5.png",
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "name": "Minimal Empty Rocking",
+      "price": 299,
+      "originalPrice": 350,
+      "discount": "30% OFF",
+      "description": "A seat, especially for one person, usually having four legs for support.",
+      "image": "https://i.ibb.co/zPDkLd9/Image.png",
+      "quantity": 1
+    }
+  ]
+  

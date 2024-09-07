@@ -1,16 +1,19 @@
+import toast from "react-hot-toast";
+
 const USERS_KEY = 'users'
 const CURRENT_USER= 'user'
-export const userSignUp = ({email,password})=>{
+export const userSignUp = ({email,password, fullName})=>{
     let users = localStorage.getItem(USERS_KEY) || '[]';
     let isExist = false;
     users = JSON.parse(users);
     isExist = users.find(user=>user.email === email) ? true: false;
 
     if(isExist){
+        toast.error("Already Exist")
         return false;
     }
 
-    users.push({email,password})
+    users.push({email,password, fullName})
     localStorage.setItem('users',JSON.stringify(users));
 }
 

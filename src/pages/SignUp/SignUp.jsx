@@ -16,10 +16,11 @@ const SignUp = () => {
 
   const {user, signUp,setLoading} = useContext(AuthContext)
 
-  const handleNameChange = (first, last) => {
-    const combinedName = `${first} ${last}`.trim();
-    setFullName(combinedName);
-  };
+  
+
+  useEffect(() => {
+    setFullName(`${firstName} ${lastName}`.trim());
+  }, [firstName, lastName]);
 
   const handleSignUp =async (e)=>{
     e.preventDefault();
@@ -30,12 +31,11 @@ const SignUp = () => {
       return;
     }
     try {
-      const data = await signUp({ email, password });
-      console.log("User signed up:", data);
-      toast.success("Sign up successful")
+      const data = await signUp({ email, password, fullName });
+      
     } catch (err) {
       setError("Signup failed. Please try again.");
-      toast.error(err.message)
+      toast.error(err)
       console.error("Error during signup:", err);
     } finally {
       setLoading(false);
@@ -49,8 +49,8 @@ const SignUp = () => {
     }
   },[user])
   return (
-    <div className="flex h-[1024px]">
-      <div className="w-1/2 flex justify-center items-center">
+    <div className="w-full flex flex-col lg:flex-row h-[1024px]">
+      <div className="w-full lg:w-1/2 lg:flex  lg:justify-center lg:items-center">
         <div className="bg-[#FAFAFA] p-6 font-barlow rounded-md">
           <div className="text-center">
             {error && <p className="text-xs text-red-400">{error}</p>}
@@ -76,6 +76,8 @@ const SignUp = () => {
                   id="firstName"
                   placeholder="Jordan"
                   className="w-full focus:outline-none h-full placeholder-black"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
 
@@ -89,6 +91,8 @@ const SignUp = () => {
                   id="lastName"
                   placeholder="Ken"
                   className="w-full focus:outline-none h-full placeholder-black"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
@@ -159,7 +163,7 @@ const SignUp = () => {
                 <hr className="w-full text-gray-400" />
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col lg:flex-row gap-4">
                 <div className="btn  bg-none shadow-none flex items-center justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border border-[#D9D9D9] rounded-md ">
                   <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
                     <path
@@ -230,7 +234,7 @@ const SignUp = () => {
         </div>
       </div>
       <div
-        className="w-1/2 h-full bg-cover relative flex justify-center items-center"
+        className="w-full lg:w-1/2 h-full bg-cover relative flex justify-center items-center"
         style={{ backgroundImage: `url(${main})` }}
       >
         <div className="absolute flex flex-col justify-center items-center ">
@@ -238,7 +242,7 @@ const SignUp = () => {
           <h4 className="font-inter text-white text-[40px] font-bold mt-[6px]">
             Furni<span className="text-[#1E99F5]">Flex</span>
           </h4>
-          <p className="text-[#C8C4C4] font-barlow font-medium w-[445px] mx-auto text-center">
+          <p className="text-[#C8C4C4] font-barlow font-medium w-full md:w-[445px] mx-auto text-center">
             Discover a seamless shopping experience with our curated collection
             of products. From fashion to electronics, we bring quality.
           </p>
