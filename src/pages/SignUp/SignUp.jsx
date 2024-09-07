@@ -22,36 +22,28 @@ const SignUp = () => {
     setFullName(`${firstName} ${lastName}`.trim());
   }, [firstName, lastName]);
 
-  const handleSignUp =async (e)=>{
+  const handleSignUp = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
-      setError("Email and Password are required.");
       setLoading(false);
       return;
     }
-    try {
-      const data = await signUp({ email, password, fullName });
-      if(data){
-        toast.success("Sign Up Successfull")
-        navigate("/products")
-      }
-      
-    } catch (err) {
+  
+    const success = await signUp({ email, password, fullName });
+    if (success) {
+      // The useEffect hook will handle navigation
+    } else {
       setError("Signup failed. Please try again.");
-      toast.error(err)
-      console.error("Error during signup:", err);
-    } finally {
-      setLoading(false);
     }
-    // console.log(email,password)
   }
+  
 
   useEffect(()=>{
     if(user){
       navigate('/products')
     }
-  },[user])
+  },[user,navigate])
   return (
     <div className="w-full flex flex-col lg:flex-row h-[1024px]">
       <div className="w-full lg:w-1/2 lg:flex  lg:justify-center lg:items-center">

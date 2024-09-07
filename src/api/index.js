@@ -9,12 +9,13 @@ export const userSignUp = ({email,password, fullName})=>{
     isExist = users.find(user=>user.email === email) ? true: false;
 
     if(isExist){
-        toast.error("Already Exist")
+       
         return false;
     }
 
     users.push({email,password, fullName})
     localStorage.setItem('users',JSON.stringify(users));
+    return true;
 }
 
 export const userLogIn = ({email,password})=>{

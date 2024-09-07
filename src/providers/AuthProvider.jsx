@@ -22,22 +22,28 @@ function AuthProvider({children}) {
             return false;
         }
     }
-    const signUp = ({email,password, fullName})=>{
-        setLoading(true)
-        const isSignUp = userSignUp({ email, password, fullName })
-
-        if(isSignUp){
-            setUser({email})
-            toast.success("Sign Up Successful")
-            setLoading(false)
+    const signUp = async ({ email, password, fullName }) => {
+        setLoading(true);
+        try {
+          const isSignUp = userSignUp({ email, password, fullName });
+      
+          if (isSignUp) {
+            setUser({ email }); // Set user state
+            toast.success("Sign up successful");
             return true;
-        }
-        else{
-            
-            setLoading(false)
+          } else {
+            toast.error("User already exists");
             return false;
+          }
+        } catch (err) {
+          toast.error("Signup failed. Please try again.");
+          console.error("Error during signup:", err);
+          return false;
+        } finally {
+          setLoading(false);
         }
-    }
+      }
+      
 
     const logOut = ()=>{
         userLogOut();
