@@ -28,7 +28,7 @@ function AuthProvider({children}) {
           const isSignUp = userSignUp({ email, password, fullName });
       
           if (isSignUp) {
-            setUser({ email }); // Set user state
+            setUser({ email }); 
             toast.success("Sign up successful");
             return true;
           } else {
