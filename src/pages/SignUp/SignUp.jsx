@@ -32,6 +32,10 @@ const SignUp = () => {
     }
     try {
       const data = await signUp({ email, password, fullName });
+      if(data){
+        toast.success("Sign Up Successfull")
+        navigate("/products")
+      }
       
     } catch (err) {
       setError("Signup failed. Please try again.");
