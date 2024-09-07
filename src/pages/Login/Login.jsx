@@ -50,6 +50,9 @@ const Login = () => {
             <p className="text-[#707070] font-medium">
             Enter your Credentials to access your account
             </p>
+            {
+              error && <p className='text-xs text-red my-5'>{error}</p>
+            }
           </div>
           <form noValidate="" action="" className="space-y-12 pt-4" onSubmit={handleLogIn}>
             <div className="space-y-4">

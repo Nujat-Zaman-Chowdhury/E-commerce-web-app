@@ -8,18 +8,19 @@ import { checkLogin } from '../api';
 const Main = () => {
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
+
     useEffect(()=>{
         const email = checkLogin();
         if(!email){
             navigate('/')
         }
     },[])
+    
     return (
         <div>
             <Navbar/>
             <div  className='min-h-[calc(100vh-306px)]'>
             <Outlet></Outlet>
-
             </div>
             <Footer/>
         </div>

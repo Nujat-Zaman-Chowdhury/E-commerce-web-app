@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import img from "../../../public/Image (2).png";
 import cross from "../../../public/cross.png";
 import { CartContext } from "../../providers/CartProvider";
 
